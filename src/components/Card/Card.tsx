@@ -19,7 +19,7 @@ export const Card: React.FC<Props> = ({ id, title, poster_path, overview, vote_a
     {poster_path ? (
         <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} className="card-img-top" style={{ borderRadius: "1.5rem" }} />
     ) : (
-        <img src="/Card/default.webp" alt="Copertina non disponibile" className="card-img-top" style={{ borderRadius: "1.5rem" }} />
+        <img src="https://raw.githubusercontent.com/stefanosallemi/TMDB-APP/main/src/components/Card/default.webp" alt="Copertina non disponibile" className="card-img-top" style={{ borderRadius: "1.5rem" }} />
     )} 
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>
