@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TMDB-APP/static/css/main.0907571e.css",
+    "main.js": "/TMDB-APP/static/js/main.c3eaa088.js",
+    "static/js/787.a33fbe1d.chunk.js": "/TMDB-APP/static/js/787.a33fbe1d.chunk.js",
+    "index.html": "/TMDB-APP/index.html",
+    "main.0907571e.css.map": "/TMDB-APP/static/css/main.0907571e.css.map",
+    "main.c3eaa088.js.map": "/TMDB-APP/static/js/main.c3eaa088.js.map",
+    "787.a33fbe1d.chunk.js.map": "/TMDB-APP/static/js/787.a33fbe1d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0907571e.css",
+    "static/js/main.c3eaa088.js"
+  ]
+}
