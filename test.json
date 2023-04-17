@@ -1,0 +1,153 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg",
+            "genre_ids": [
+                16,
+                12,
+                10751,
+                14,
+                35
+            ],
+            "id": 502356,
+            "original_language": "en",
+            "original_title": "The Super Mario Bros. Movie",
+            "overview": "While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi.",
+            "popularity": 12929.143,
+            "poster_path": "/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg",
+            "release_date": "2023-04-05",
+            "title": "The Super Mario Bros. Movie",
+            "video": false,
+            "vote_average": 7.5,
+            "vote_count": 908
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/1GGfWFp9hp4RUHRHxd505z9rVFa.jpg",
+            "genre_ids": [
+                28,
+                12,
+                35,
+                10751,
+                878
+            ],
+            "id": 9607,
+            "original_language": "en",
+            "original_title": "Super Mario Bros.",
+            "overview": "Mario and Luigi, plumbers from Brooklyn, find themselves in an alternate universe where evolved dinosaurs live in hi-tech squalor. They're the only hope to save our universe from invasion by the dino dictator, Koopa.",
+            "popularity": 720.725,
+            "poster_path": "/cudfWiiFDxj8rq1Myolzv6yY3ah.jpg",
+            "release_date": "1993-05-28",
+            "title": "Super Mario Bros.",
+            "video": false,
+            "vote_average": 4.269,
+            "vote_count": 1052
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/7PzpnGL4W0oy1NAd0toIZeuDt0G.jpg",
+            "genre_ids": [
+                16,
+                35,
+                14
+            ],
+            "id": 28152,
+            "original_language": "ja",
+            "original_title": "スーパーマリオブラザーズ ピーチ姫救出大作戦!",
+            "overview": "When Princess Peach is kidnapped by the monster King Koopa, Mario and his brother Luigi journey to the Mushroom Kingdom to rescue her.",
+            "popularity": 574.907,
+            "poster_path": "/d8466YAgDFZmsrWmgizPcUQMsIx.jpg",
+            "release_date": "1986-07-20",
+            "title": "Super Mario Brothers: Great Mission to Rescue Princess Peach",
+            "video": false,
+            "vote_average": 6.1,
+            "vote_count": 16
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [],
+            "id": 1015755,
+            "original_language": "en",
+            "original_title": "Mario Bros Mix",
+            "overview": "Mario Bros. Mix is a DVD with episodes from The Super Mario Bros. Super Show!, The Adventures of Super Mario Bros. 3, and Super Mario World.  The above text is from the Super Mario Wiki and is available under a Creative Commons license. Attribution must be provided through a list of authors or a link back to the original article. Source: https://www.mariowiki.com/Mario_Bros._Mix",
+            "popularity": 255.568,
+            "poster_path": "/31mLnkM5uI9WeNtqLQY9oSWa3Dp.jpg",
+            "release_date": "",
+            "title": "Mario Bros Mix",
+            "video": true,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                99
+            ],
+            "id": 314242,
+            "original_language": "en",
+            "original_title": "Super Mario Bros: This Ain't No Video Game",
+            "overview": "A documentary about the making of the live-action Super Mario Bros. movie.",
+            "popularity": 166.876,
+            "poster_path": "/wjpc5CMyWcP2npWcm3M9XBACBTs.jpg",
+            "release_date": "2014-11-03",
+            "title": "Super Mario Bros: This Ain't No Video Game",
+            "video": false,
+            "vote_average": 3.4,
+            "vote_count": 5
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [],
+            "id": 1067917,
+            "original_language": "en",
+            "original_title": "Super Mario Bros. Mix",
+            "overview": "Mario Bros. Mix is a DVD with episodes from The Super Mario Bros. Super Show!, The Adventures of Super Mario Bros. 3, and Super Mario World.",
+            "popularity": 39.932,
+            "poster_path": null,
+            "release_date": "2009-09-08",
+            "title": "Super Mario Bros. Mix",
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [],
+            "id": 1099856,
+            "original_language": "en",
+            "original_title": "The History of Super Mario Bros 3 100% World Records",
+            "overview": "Summoning Salt's video encompassing the world record history of SMB3 100%.",
+            "popularity": 61.012,
+            "poster_path": "/dav511Ij9kX66ojkconDg2hvrwg.jpg",
+            "release_date": "",
+            "title": "The History of Super Mario Bros 3 100% World Records",
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [],
+            "id": 311847,
+            "original_language": "en",
+            "original_title": "Super Mario Bros.: Once Upon a Koopa",
+            "overview": "Mario climbs a beanstalk to take on a giant Koopa in \"Mario and the Beanstalk\"; \"The Adventures of Sherlock Mario\" finds the brothers sleuthing; \"Hooded Robin and His Mario Men\" recover stolen gold from the Sheriff of Koopingham; a Koopa is the big bad wolf in \"Little Red Riding Princess\"; and a monster is unleashed in \"Koopenstein.\"",
+            "popularity": 24.767,
+            "poster_path": null,
+            "release_date": "",
+            "title": "Super Mario Bros.: Once Upon a Koopa",
+            "video": true,
+            "vote_average": 0.0,
+            "vote_count": 0
+        }
+    ],
+    "total_pages": 1,
+    "total_results": 8
+}
