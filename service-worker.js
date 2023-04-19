@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/TMDB-APP/precache-manifest.8316a596d1afb4697b2b333e8f51d39b.js"
+  "/TMDB-APP/precache-manifest.27821859a599885b695f6f8aff92138b.js"
 );
 
 workbox.clientsClaim();
