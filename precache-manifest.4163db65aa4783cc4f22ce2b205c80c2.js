@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "d54c11e42563c0d26597",
-    "url": "/TMDB-APP/static/js/main.d54c11e4.chunk.js"
+    "revision": "9b6467043c7f83e2bbe0",
+    "url": "/TMDB-APP/static/js/main.9b646704.chunk.js"
   },
   {
     "revision": "c765bae6be2a5b9a7cdf",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/TMDB-APP/static/js/runtime~main.63ba6377.js"
   },
   {
-    "revision": "58f68c77b0eb6a0250e22b421f25fb46",
+    "revision": "4857fcfaf64b6d40fdd85c9a92d15908",
     "url": "/TMDB-APP/index.html"
   }
 ];
