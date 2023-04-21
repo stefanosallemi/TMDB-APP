@@ -1,35 +1,222 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card } from './components/Card/Card';
 import { Search } from './components/Search/Search';
-import 'bootstrap/dist/css/bootstrap.css';
-
+import { Navbar } from './components/Navbar/Navbar';
+import { Tranding } from './components/Tranding/Tranding';
+import "./style.css";
+import ConnectionCheck from './components/ConnectionCheck/ConnectionCheck';
 interface Movie {
   id: number;
   title: string;
   poster_path: string;
   overview: string;
   vote_average: string;
+  release_date: string;
+  original_language: string;
+  adult: boolean;
+  total_results: string;
 }
 
 const App: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [totalResults, setTotalResults] = useState<string>('');
+  const [tranding, setTranding] = useState<Movie[]>([]);
+  const [kids, setKids] = useState<Movie[]>([]);
+  const [hideDiv, setHideDiv] = useState(false);
+  const [hideSkTranding, SethideSkTranding] = useState(false);
+  const [hideSkKids, SethideSkKids] = useState(false);
 
   const handleSearch = async (query: string) => {
     const response = await axios.get(
       `https://api.themoviedb.org/3/search/movie?api_key=548f27d6b5190070c81de2b221563690&query=${query}`
     );
     setMovies(response.data.results);
+    setTotalResults(response.data.total_results);
+    setHideDiv(true);
   };
 
-  return (<div>
-    <Search onSearch={handleSearch} />
-    <div className='d-flex justify-content-center row'>
-      {movies.map((movie) => (
-        <Card id={movie.id} title={movie.title} poster_path={movie.poster_path} overview={movie.overview} vote_average={movie.vote_average} />
-      ))}
+  useEffect(() => {
+    const fetchTranding = async () => {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/trending/all/day?api_key=548f27d6b5190070c81de2b221563690`
+      );
+      setTranding(response.data.results);
+      SethideSkTranding(true);
+    };
+    fetchTranding();
+  }, []);
+
+  useEffect(() => {
+    const fetchKids = async () => {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=548f27d6b5190070c81de2b221563690`
+      );
+      setKids(response.data.results);
+      SethideSkKids(true);
+    };
+    fetchKids();
+  }, []);
+
+  return (
+    <div>
+      <div style={{marginTop: "6rem"}}>
+        <ConnectionCheck />
+      </div>
+      <Navbar totalResults={totalResults} />
+      <Search onSearch={handleSearch} />
+      <div>
+        {!hideDiv && (
+          <div>
+            <h1 style={{ fontWeight: "800", fontSize: "3rem", marginBottom: "0rem", marginLeft: "1rem", marginTop: "-2rem" }}>Popolari</h1>
+            <div style={{ overflowX: "scroll", overflowY: "hidden", whiteSpace: "nowrap" }}>
+              <div className='d-flex row' style={{ width: "300rem", marginLeft: "0rem", marginRight: "0rem" }}>
+                {!hideSkTranding && (
+                  <div className="card col" style={{ borderRadius: "2rem", paddingTop: "0.7rem", margin: "1rem" }}>
+                    <div className='card placeholder-glow' style={{ width: "12rem" }}>
+                      <span className='placeholder' style={{ padding: "6rem", height: "16rem", borderRadius: "1.5rem" }}>
+                      </span>
+                      <div className="card-body">
+                        <div className='row' style={{ bottom: "0" }}>
+                          <button className="btn btn-primary rounded-pill col disabled placeholder col-6">
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {tranding.map((tranding) => (
+                  <Tranding id={tranding.id} title={tranding.title} poster_path={tranding.poster_path} overview={tranding.overview} vote_average={tranding.vote_average} release_date={tranding.release_date} original_language={tranding.original_language} adult={tranding.adult} />
+                ))}
+              </div>
+            </div>
+
+            <h1 style={{ fontWeight: "800", fontSize: "3rem", marginBottom: "0rem", marginLeft: "1rem" }}>Per Bambini</h1>
+            <div style={{ overflowX: "scroll", overflowY: "hidden", whiteSpace: "nowrap" }}>
+              <div className='d-flex row' style={{ width: "300rem", marginLeft: "0rem", marginRight: "0rem" }}>
+                {!hideSkKids && (
+                  <div className="card col" style={{ borderRadius: "2rem", paddingTop: "0.7rem", margin: "1rem" }}>
+                    <div className='card placeholder-glow' style={{ width: "12rem" }}>
+                      <span className='placeholder' style={{ padding: "6rem", height: "16rem", borderRadius: "1.5rem" }}>
+                      </span>
+                      <div className="card-body">
+                        <div className='row' style={{ bottom: "0" }}>
+                          <button className="btn btn-primary rounded-pill col disabled placeholder col-6">
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {kids.map((tranding) => (
+                  <Tranding id={tranding.id} title={tranding.title} poster_path={tranding.poster_path} overview={tranding.overview} vote_average={tranding.vote_average} release_date={tranding.release_date} original_language={tranding.original_language} adult={tranding.adult} />
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+      <div>
+        <h1 style={{ fontWeight: "800", fontSize: "3rem", marginBottom: "-0.5rem", marginLeft: "1rem", marginTop: "0.5rem" }}>Risultati</h1>
+        <div className='d-flex justify-content-center row' style={{ marginBottom: "6rem" }}>
+          {movies.map((movie) => (
+            <Card id={movie.id} title={movie.title} poster_path={movie.poster_path} overview={movie.overview} vote_average={movie.vote_average} release_date={movie.release_date} original_language={movie.original_language} adult={movie.adult} />
+          ))}
+          {!hideDiv && (
+            <div className='d-flex justify-content-center row' style={{ marginBottom: "0rem" }}>
+              <div className="card placeholder-glow" style={{ width: "20rem", borderRadius: "2rem", paddingTop: "0.7rem", margin: "1rem" }}>
+                <span className='placeholder' style={{ padding: "6rem", borderRadius: "1.5rem", height: "25rem", width: "18.4rem" }}>
+                </span>
+                <div className="card-body">
+                  <div style={{ marginLeft: "-1rem", marginBottom: "1rem" }}>
+                    <h5 style={{ fontWeight: "bold" }} className="card-title placeholder-glow">
+                      <span className="placeholder col-6"></span>
+                    </h5>
+                    <p className="card-text placeholder-glow">
+                      <span className="placeholder col-7"></span>
+                      <span className="placeholder col-4"></span>
+                      <span className="placeholder col-4"></span>
+                      <span className="placeholder col-6"></span>
+                      <span className="placeholder col-8"></span>
+                    </p>
+                  </div>
+                  <div className='row' style={{ bottom: "0" }}>
+                    <button className="btn btn-primary rounded-pill col disabled placeholder col-6">
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="card placeholder-glow" style={{ width: "20rem", borderRadius: "2rem", paddingTop: "0.7rem", margin: "1rem" }}>
+                <span className='placeholder' style={{ padding: "6rem", borderRadius: "1.5rem", height: "25rem", width: "18.4rem" }}>
+                </span>
+                <div className="card-body">
+                  <div style={{ marginLeft: "-1rem", marginBottom: "1rem" }}>
+                    <h5 style={{ fontWeight: "bold" }} className="card-title placeholder-glow">
+                      <span className="placeholder col-6"></span>
+                    </h5>
+                    <p className="card-text placeholder-glow">
+                      <span className="placeholder col-7"></span>
+                      <span className="placeholder col-4"></span>
+                      <span className="placeholder col-4"></span>
+                      <span className="placeholder col-6"></span>
+                      <span className="placeholder col-8"></span>
+                    </p>
+                  </div>
+                  <div className='row' style={{ bottom: "0" }}>
+                    <button className="btn btn-primary rounded-pill col disabled placeholder col-6">
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="card placeholder-glow" style={{ width: "20rem", borderRadius: "2rem", paddingTop: "0.7rem", margin: "1rem" }}>
+                <span className='placeholder' style={{ padding: "6rem", borderRadius: "1.5rem", height: "25rem", width: "18.4rem" }}>
+                </span>
+                <div className="card-body">
+                  <div style={{ marginLeft: "-1rem", marginBottom: "1rem" }}>
+                    <h5 style={{ fontWeight: "bold" }} className="card-title placeholder-glow">
+                      <span className="placeholder col-6"></span>
+                    </h5>
+                    <p className="card-text placeholder-glow">
+                      <span className="placeholder col-7"></span>
+                      <span className="placeholder col-4"></span>
+                      <span className="placeholder col-4"></span>
+                      <span className="placeholder col-6"></span>
+                      <span className="placeholder col-8"></span>
+                    </p>
+                  </div>
+                  <div className='row' style={{ bottom: "0" }}>
+                    <button className="btn btn-primary rounded-pill col disabled placeholder col-6">
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="card placeholder-glow" style={{ width: "20rem", borderRadius: "2rem", paddingTop: "0.7rem", margin: "1rem" }}>
+                <span className='placeholder' style={{ padding: "6rem", borderRadius: "1.5rem", height: "25rem", width: "18.4rem" }}>
+                </span>
+                <div className="card-body">
+                  <div style={{ marginLeft: "-1rem", marginBottom: "1rem" }}>
+                    <h5 style={{ fontWeight: "bold" }} className="card-title placeholder-glow">
+                      <span className="placeholder col-6"></span>
+                    </h5>
+                    <p className="card-text placeholder-glow">
+                      <span className="placeholder col-7"></span>
+                      <span className="placeholder col-4"></span>
+                      <span className="placeholder col-4"></span>
+                      <span className="placeholder col-6"></span>
+                      <span className="placeholder col-8"></span>
+                    </p>
+                  </div>
+                  <div className='row' style={{ bottom: "0" }}>
+                    <button className="btn btn-primary rounded-pill col disabled placeholder col-6">
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
-  </div>
   );
 };
 
