@@ -1,7 +1,7 @@
 {
   "main.css": "/TMDB-APP/static/css/main.31f460d8.chunk.css",
-  "main.js": "/TMDB-APP/static/js/main.37428856.chunk.js",
-  "main.js.map": "/TMDB-APP/static/js/main.37428856.chunk.js.map",
+  "main.js": "/TMDB-APP/static/js/main.77a673d8.chunk.js",
+  "main.js.map": "/TMDB-APP/static/js/main.77a673d8.chunk.js.map",
   "static/js/1.0923ec39.chunk.js": "/TMDB-APP/static/js/1.0923ec39.chunk.js",
   "static/js/1.0923ec39.chunk.js.map": "/TMDB-APP/static/js/1.0923ec39.chunk.js.map",
   "static/css/2.55ac1689.chunk.css": "/TMDB-APP/static/css/2.55ac1689.chunk.css",
@@ -9,9 +9,9 @@
   "static/js/2.0753caa6.chunk.js.map": "/TMDB-APP/static/js/2.0753caa6.chunk.js.map",
   "runtime~main.js": "/TMDB-APP/static/js/runtime~main.41cdae73.js",
   "runtime~main.js.map": "/TMDB-APP/static/js/runtime~main.41cdae73.js.map",
-  "static/css/2.55ac1689.chunk.css.map": "/TMDB-APP/static/css/2.55ac1689.chunk.css.map",
   "static/css/main.31f460d8.chunk.css.map": "/TMDB-APP/static/css/main.31f460d8.chunk.css.map",
+  "static/css/2.55ac1689.chunk.css.map": "/TMDB-APP/static/css/2.55ac1689.chunk.css.map",
   "index.html": "/TMDB-APP/index.html",
-  "precache-manifest.b3c116c9cb925fc2352ab62714d87f03.js": "/TMDB-APP/precache-manifest.b3c116c9cb925fc2352ab62714d87f03.js",
+  "precache-manifest.dc2c1cbf1da54e3e54ae97d0ba0e8f6c.js": "/TMDB-APP/precache-manifest.dc2c1cbf1da54e3e54ae97d0ba0e8f6c.js",
   "service-worker.js": "/TMDB-APP/service-worker.js"
 }
