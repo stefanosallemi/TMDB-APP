@@ -6,20 +6,23 @@ interface Props {
 
 export const Search: React.FC<Props> = ({ onSearch }) => {
     const [query, setQuery] = useState('');
-    const [isScrolled, setIsScrolled] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(true);
+    const [isInputClicked, setIsInputClicked] = useState(false);
 
     useEffect(() => {
+        let prevScrollY = window.pageYOffset;
         const handleScroll = () => {
             const scrollTop = window.pageYOffset;
-            if (scrollTop > 0 && !isScrolled) {
-                setIsScrolled(true);
-            } else if (scrollTop === 0 && isScrolled) {
-                setIsScrolled(false);
+            if (!isInputClicked) { // Aggiunto controllo su isInputClicked
+                setIsScrolled(scrollTop >= 0 && scrollTop < prevScrollY);
+            } else {
+                setIsScrolled(false); // Imposto isScrolled su false
             }
+            prevScrollY = scrollTop;
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [isScrolled]);
+    }, [isInputClicked]); // Aggiunto isInputClicked come dipendenza
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -32,7 +35,7 @@ export const Search: React.FC<Props> = ({ onSearch }) => {
                 className='d-flex flex-row justify-content-around'
                 style={{
                     transition: 'transform 0.3s ease-out',
-                    transform: isScrolled ? 'translateY(100%)' : 'translateY(0)',
+                    transform: isScrolled ? 'translateY(100%)' : 'translateY(0%)',
                     position: 'fixed',
                     bottom: 0,
                     zIndex: 1,
@@ -55,8 +58,9 @@ export const Search: React.FC<Props> = ({ onSearch }) => {
                             className='d-flex flex-row-reverse justify-content-between'
                             style={{ marginLeft: '-0.3rem' }}
                         >
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit} >
                                 <div className='mb-3'>
+
                                     <input
                                         style={{
                                             fontWeight: "500",
@@ -68,6 +72,7 @@ export const Search: React.FC<Props> = ({ onSearch }) => {
                                         placeholder='Cerca un film'
                                         value={query}
                                         onChange={(e) => setQuery(e.target.value)}
+                                        onClick={() => setIsInputClicked(true)} // Aggiunto onClick
                                         className='form-control rounded-pill'
                                     />
                                     <button
@@ -97,7 +102,7 @@ export const Search: React.FC<Props> = ({ onSearch }) => {
                 className='d-flex flex-row justify-content-around'
                 style={{
                     transition: 'transform 0.3s ease-out',
-                    transform: isScrolled ? 'translateY(0)' : 'translateY(100%)',
+                    transform: isScrolled ? 'translateY(0%)' : 'translateY(100%)',
                     position: 'fixed',
                     bottom: 0,
                     zIndex: 1,
@@ -116,7 +121,7 @@ export const Search: React.FC<Props> = ({ onSearch }) => {
                     }}
                 >
                     <a href="#">
-                        <img style={{marginLeft: "0.28rem", marginTop:"0.35rem"}} src="https://raw.githubusercontent.com/stefanosallemi/TMDB-APP/main/src/components/Search/arrow.png" alt="" />
+                        <img style={{ marginLeft: "0.28rem", marginTop: "0.35rem" }} src="https://raw.githubusercontent.com/stefanosallemi/TMDB-APP/main/src/components/Search/arrow.png" alt="" />
                     </a>
                 </div>
             </div>

@@ -21,9 +21,9 @@ export const Tranding: React.FC<Movie> = ({ id, title, poster_path, overview, vo
     return (
         <div className="card col" style={{ borderRadius: "2rem", paddingTop: "0.7rem", margin: "1rem" }} key={id}>
             {poster_path ? (
-                <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} className="card-img-top" style={{ borderRadius: "1.5rem" }} />
+                <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} className="card-img-top" style={{ borderRadius: "1.5rem", height: "16rem" }} />
             ) : (
-                <img src="https://raw.githubusercontent.com/stefanosallemi/TMDB-APP/main/src/components/Card/default.webp" alt="Copertina non disponibile" className="card-img-top" style={{ borderRadius: "1.5rem" }} />
+                <img src="https://raw.githubusercontent.com/stefanosallemi/TMDB-APP/main/src/components/Card/default.webp" alt="Copertina non disponibile" className="card-img-top" style={{ borderRadius: "1.5rem", height: "16rem" }} />
             )}
             <div className="card-body">
                 <div className='row' style={{ bottom: "0" }}>

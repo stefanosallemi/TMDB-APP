@@ -31,8 +31,8 @@ export const Card: React.FC<Props> = ({ id, title, poster_path, overview, vote_a
                 <img src="https://raw.githubusercontent.com/stefanosallemi/TMDB-APP/main/src/components/Card/default.webp" alt="Copertina non disponibile" className="card-img-top" style={{ borderRadius: "1.5rem" }} />
             )}
             <div style={{ bottom: "0"}} className="card-body">
-                <h5 style={{fontWeight: "bold"}} className="card-title">{shortTitle}</h5>
-                <p className="card-text">
+                <h5 style={{fontWeight: "bold", height: "2rem", marginBottom: "1rem"}} className="card-title">{shortTitle}</h5>
+                <p style={{height: "4rem"}} className="card-text">
                     {shortOverview}
                 </p>
                 <div className='row' style={{ bottom: "0"}}>

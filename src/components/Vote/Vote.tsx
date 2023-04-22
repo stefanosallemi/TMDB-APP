@@ -39,7 +39,8 @@ export function CircularProgressWithLabel(
             >
                 <Typography
                     sx={{
-                        marginLeft: "-2.5rem"
+                        marginLeft: "-2.5rem",
+                        marginTop: "0.12rem"
                     }}
                     variant="caption"
                     component="div"
