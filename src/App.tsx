@@ -24,19 +24,21 @@ interface Movie {
 const App: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [totalResults, setTotalResults] = useState<string>('');
-  
+  const [hideDiv, setHideDiv] = useState(false);
+
   const [tranding, setTranding] = useState<Movie[]>([]);
   const [kids, setKids] = useState<Movie[]>([]);
   const [best, setBest] = useState<Movie[]>([]);
 
-  const [hideDiv, setHideDiv] = useState(false);
   const [hideSkTranding, SethideSkTranding] = useState(false);
   const [hideSkKids, SethideSkKids] = useState(false);
   const [hideSkBest, SethideSkBest] = useState(false);
 
+  const API_KEY = "548f27d6b5190070c81de2b221563690";
+
   const handleSearch = async (query: string) => {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/search/movie?api_key=548f27d6b5190070c81de2b221563690&query=${query}`
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`
     );
     setMovies(response.data.results);
     setTotalResults(response.data.total_results);
@@ -46,7 +48,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchTranding = async () => {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/trending/all/day?api_key=548f27d6b5190070c81de2b221563690`
+        `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
       );
       setTranding(response.data.results);
       SethideSkTranding(true);
@@ -57,7 +59,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchKids = async () => {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=548f27d6b5190070c81de2b221563690`
+        `https://api.themoviedb.org/3/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${API_KEY}`
       );
       setKids(response.data.results);
       SethideSkKids(true);
@@ -68,7 +70,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchBest = async () => {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=548f27d6b5190070c81de2b221563690`
+        `https://api.themoviedb.org/3/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=${API_KEY}`
       );
       setBest(response.data.results);
       SethideSkBest(true);
@@ -89,7 +91,7 @@ const App: React.FC = () => {
             <h1 style={{ fontWeight: "800", fontSize: "3rem", marginBottom: "0rem", marginLeft: "1rem", marginTop: "-2rem" }}>Popolari</h1>
             <div style={{ overflowX: "scroll", overflowY: "hidden", whiteSpace: "nowrap" }}>
               <div className='d-flex row' style={{ width: "300rem", marginLeft: "0rem", marginRight: "0rem" }}>
-                {!SethideSkBest && (
+                {!hideSkTranding && (
                   <div className="card col" style={{ borderRadius: "2rem", paddingTop: "0.7rem", margin: "1rem" }}>
                     <div className='card placeholder-glow' style={{ width: "12rem" }}>
                       <span className='placeholder' style={{ padding: "6rem", height: "16rem", borderRadius: "1.5rem" }}>
