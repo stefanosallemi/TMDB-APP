@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import "./style.css";
 import { Card } from './components/Card/Card';
 import { Search } from './components/Search/Search';
 import { Navbar } from './components/Navbar/Navbar';
 import { Tranding } from './components/Tranding/Tranding';
-import "./style.css";
 import ConnectionCheck from './components/ConnectionCheck/ConnectionCheck';
+import AuthModal from './components/AuthModal/AuthModal';
+import { Container, Alert } from 'react-bootstrap';
+
 interface Movie {
   id: number;
   title: string;
@@ -21,9 +24,11 @@ interface Movie {
 const App: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [totalResults, setTotalResults] = useState<string>('');
+  
   const [tranding, setTranding] = useState<Movie[]>([]);
   const [kids, setKids] = useState<Movie[]>([]);
   const [best, setBest] = useState<Movie[]>([]);
+
   const [hideDiv, setHideDiv] = useState(false);
   const [hideSkTranding, SethideSkTranding] = useState(false);
   const [hideSkKids, SethideSkKids] = useState(false);
@@ -73,7 +78,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <div style={{marginTop: "6rem"}}>
+      <div style={{ marginTop: "6rem" }}>
         <ConnectionCheck />
       </div>
       <Navbar totalResults={totalResults} />
@@ -121,8 +126,8 @@ const App: React.FC = () => {
                     </div>
                   </div>
                 )}
-                {kids.map((tranding) => (
-                  <Tranding id={tranding.id} title={tranding.title} poster_path={tranding.poster_path} overview={tranding.overview} vote_average={tranding.vote_average} release_date={tranding.release_date} original_language={tranding.original_language} adult={tranding.adult} />
+                {kids.map((kids) => (
+                  <Tranding id={kids.id} title={kids.title} poster_path={kids.poster_path} overview={kids.overview} vote_average={kids.vote_average} release_date={kids.release_date} original_language={kids.original_language} adult={kids.adult} />
                 ))}
               </div>
             </div>
@@ -130,7 +135,7 @@ const App: React.FC = () => {
             <h1 style={{ fontWeight: "800", fontSize: "3rem", marginBottom: "0rem", marginLeft: "1rem" }}>I più votati</h1>
             <div style={{ overflowX: "scroll", overflowY: "hidden", whiteSpace: "nowrap" }}>
               <div className='d-flex row' style={{ width: "300rem", marginLeft: "0rem", marginRight: "0rem" }}>
-                {!hideSkKids && (
+                {!hideSkBest && (
                   <div className="card col" style={{ borderRadius: "2rem", paddingTop: "0.7rem", margin: "1rem" }}>
                     <div className='card placeholder-glow' style={{ width: "12rem" }}>
                       <span className='placeholder' style={{ padding: "6rem", height: "16rem", borderRadius: "1.5rem" }}>

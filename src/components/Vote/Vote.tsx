@@ -13,17 +13,17 @@ interface Props {
 export function CircularProgressWithLabel(
     props: CircularProgressProps & { value: number },
 ) {
-        const [loader, setLoader] = useState<string>("indeterminate");
-      
-        useEffect(() => {
-          const timer = setTimeout(() => {
+    const [loader, setLoader] = useState<string>("indeterminate");
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
             setLoader("determinate");
-          }, 1000);
-          return () => clearTimeout(timer);
-        }, []);
-      
-        const variant = loader === "indeterminate" ? "indeterminate" : "determinate";
-      
+        }, 1000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    const variant = loader === "indeterminate" ? "indeterminate" : "determinate";
+
     return (
         <Box sx={{ position: 'relative', display: 'inline-flex' }}>
             <CircularProgress variant={variant} {...props} />

@@ -13,20 +13,22 @@ export const Search: React.FC<Props> = ({ onSearch }) => {
         let prevScrollY = window.pageYOffset;
         const handleScroll = () => {
             const scrollTop = window.pageYOffset;
-            if (!isInputClicked) { // Aggiunto controllo su isInputClicked
-                setIsScrolled(scrollTop >= 0 && scrollTop < prevScrollY);
-            } else {
-                setIsScrolled(false); // Imposto isScrolled su false
+            if (!isInputClicked) {
+                setIsScrolled(scrollTop > 0 && scrollTop < prevScrollY);
             }
             prevScrollY = scrollTop;
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [isInputClicked]); // Aggiunto isInputClicked come dipendenza
+    }, [isInputClicked]);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         onSearch(query);
+    };
+
+    const handleInputBlur = () => {
+        setIsInputClicked(false);
     };
 
     return (
@@ -35,7 +37,7 @@ export const Search: React.FC<Props> = ({ onSearch }) => {
                 className='d-flex flex-row justify-content-around'
                 style={{
                     transition: 'transform 0.3s ease-out',
-                    transform: isScrolled ? 'translateY(100%)' : 'translateY(0%)',
+                    transform: isScrolled ? 'translateY(0%)' : 'translateY(100%)',
                     position: 'fixed',
                     bottom: 0,
                     zIndex: 1,
@@ -58,12 +60,11 @@ export const Search: React.FC<Props> = ({ onSearch }) => {
                             className='d-flex flex-row-reverse justify-content-between'
                             style={{ marginLeft: '-0.3rem' }}
                         >
-                            <form onSubmit={handleSubmit} >
+                            <form onSubmit={handleSubmit}>
                                 <div className='mb-3'>
-
                                     <input
                                         style={{
-                                            fontWeight: "500",
+                                            fontWeight: '500',
                                             width: '16.3rem',
                                             height: '2.4rem',
                                             marginRight: '-0.3rem',
@@ -72,7 +73,8 @@ export const Search: React.FC<Props> = ({ onSearch }) => {
                                         placeholder='Cerca un film'
                                         value={query}
                                         onChange={(e) => setQuery(e.target.value)}
-                                        onClick={() => setIsInputClicked(true)} // Aggiunto onClick
+                                        onClick={() => setIsInputClicked(true)}
+                                        onBlur={handleInputBlur}
                                         className='form-control rounded-pill'
                                     />
                                     <button
@@ -80,7 +82,7 @@ export const Search: React.FC<Props> = ({ onSearch }) => {
                                         type='submit'
                                         className='btn btn-primary rounded-pill'
                                         style={{
-                                            fontWeight: "500",
+                                            fontWeight: '500',
                                             paddingLeft: '1rem',
                                             paddingRight: '1.1rem',
                                             height: '2.4rem',
@@ -102,7 +104,7 @@ export const Search: React.FC<Props> = ({ onSearch }) => {
                 className='d-flex flex-row justify-content-around'
                 style={{
                     transition: 'transform 0.3s ease-out',
-                    transform: isScrolled ? 'translateY(0%)' : 'translateY(100%)',
+                    transform: isScrolled ? 'translateY(100%)' : 'translateY(0%)',
                     position: 'fixed',
                     bottom: 0,
                     zIndex: 1,
